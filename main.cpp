@@ -33,9 +33,9 @@ struct Position
 class Piece
 {
 public:
-    virtual void Move(const Position& nextPosition) = 0;
+    virtual void Move(Position& nextPosition) = 0;
     virtual bool IsMoveValiable(const Position& nextPosition) = 0;
-    virtual void Eat(const Piece& target) = 0;
+    virtual void Eat(Piece& target) = 0;
     virtual ~Piece() {};
     
 private:
