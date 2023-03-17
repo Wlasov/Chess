@@ -33,7 +33,7 @@ struct Position
 class Piece
 {
 public:
-    virtual void Move(Position& nextPosition) = 0; //Двигает фигуру на другую клетку
+    virtual void Move(Position& nextPosition) = 0; //Двигает фигуру на указанную позицию
     virtual bool IsMoveValiable(const Position& nextPosition) = 0; //Проверяет может ли фигура попасть на указанную позицию
     virtual void Eat(Piece& target) = 0; // Ест указанную фигуру
     virtual ~Piece() {};
