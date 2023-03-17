@@ -42,6 +42,7 @@ private:
     EColor _color;
 };
 
+// Фигуры
 class Pawn: public Piece {};
 
 class Knight: public Piece {};
@@ -149,6 +150,7 @@ private:
     Cell* _cells;
 };
 
+//Обработчик позиций, сохраняет и загружает доску с фигурами
 class PositionHandler
 {
 public:
