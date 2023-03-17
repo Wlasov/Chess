@@ -19,6 +19,7 @@ chess + 8 queens problem
 Пример файла с позициями:
 
 Pe4 Pe5
+
 Nf3 Nc6
 
 Вывод:
