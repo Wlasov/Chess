@@ -7,13 +7,13 @@ enum EColor
     White,
 };
 
-// Перерводит енум цвета в белый или черный квадратик
+// Перерводит енум цвета в строку белого или черного квадрата
 std::string ColorToString(EColor color)
 {
     switch (color)
     {
         case 0:
-            return "\u25A0 ";
+            return "\u25A0 "; //черный квадрат
         case 1:
             return  "\u25A1 ";
         default:
@@ -33,8 +33,8 @@ struct Position
 class Piece
 {
 public:
-    virtual void Move(Position& nextPosition) = 0;
-    virtual bool IsMoveValiable(const Position& nextPosition) = 0;
+    virtual void Move(Position& nextPosition) = 0; //Двигает фигуру на другую клетку
+    virtual bool IsMoveValiable(const Position& nextPosition) = 0; //Проверяет может ли фигура попасть на указанную позицию
     virtual void Eat(Piece& target) = 0;
     virtual ~Piece() {};
     
@@ -43,17 +43,17 @@ private:
 };
 
 // Фигуры
-class Pawn: public Piece {};
+class Pawn: public Piece {}; //Пешка 
 
-class Knight: public Piece {};
+class Knight: public Piece {}; // ЛОШАДЬ
 
-class Bishop: public Piece {};
+class Bishop: public Piece {}; // МАМОНТ
 
-class Rook: public Piece {};
+class Rook: public Piece {}; // ЛАДЬЯ
 
-class Queen: public Piece {};
+class Queen: public Piece {}; // ФЕРЗЬ
 
-class King: public Piece {};
+class King: public Piece {}; // КОРОЛЬ
 
 class Cell
 {
@@ -151,11 +151,11 @@ private:
 };
 
 //Обработчик позиций, сохраняет и загружает доску с фигурами
-class PositionHandler
+class DeckHandler
 {
 public:
-    static Board* Load(std::string& path);
-    static void Save();
+    static Board* Load(std::string& path); //Загружает позиции фигур из файла
+    static void Save(); //Сохраняет позиции фигур в файл
 };
 
 int main(void)
