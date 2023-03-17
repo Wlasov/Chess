@@ -151,7 +151,7 @@ private:
 };
 
 //Обработчик позиций, сохраняет и загружает доску с фигурами
-class DeckHandler
+class PositionsHandler
 {
 public:
     static Board* Load(std::string& path); //Загружает позиции фигур из файла
