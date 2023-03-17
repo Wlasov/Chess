@@ -42,6 +42,18 @@ private:
     EColor _color;
 };
 
+class Pawn: public Piece {};
+
+class Knight: public Piece {};
+
+class Bishop: public Piece {};
+
+class Rook: public Piece {};
+
+class Queen: public Piece {};
+
+class King: public Piece {};
+
 class Cell
 {
 public:
@@ -135,6 +147,13 @@ public:
 private:
     size_t _size;
     Cell* _cells;
+};
+
+class PositionHandler
+{
+public:
+    static Board* Load();
+    static void Save();
 };
 
 int main(void)
