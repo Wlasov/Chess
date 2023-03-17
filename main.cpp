@@ -15,7 +15,7 @@ std::string ColorToString(EColor color)
         case 0:
             return "\u25A0 "; //черный квадрат
         case 1:
-            return  "\u25A1 ";
+            return  "\u25A1 "; //белый квадрат
         default:
             return "  ";
     }
