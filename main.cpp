@@ -154,7 +154,7 @@ private:
 class PositionHandler
 {
 public:
-    static Board* Load();
+    static Board* Load(std::string& path);
     static void Save();
 };
 
