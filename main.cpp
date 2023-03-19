@@ -4,6 +4,7 @@
 class Cell;
 class Piece;
 class Board;
+class GameManager;
 
 enum EColor
 {
@@ -182,6 +183,17 @@ public:
 private:
     size_t _size;
     Cell* _cells;
+};
+
+class GameManager
+{
+public:
+    GameManager();
+    virtual ~GameManager();
+    
+private:
+    Piece* whitePieces;
+    Piece* blackPieces;
 };
 
 int main(void)
