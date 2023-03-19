@@ -1,59 +1,83 @@
 #include <iostream>
+#include <typeinfo>
 
-// Цвет клетки и фигуры
+class Cell;
+class Piece;
+class Board;
+
 enum EColor
 {
     Black = 0,
     White,
 };
 
-// Перерводит енум цвета в строку белого или черного квадрата
 std::string ColorToString(EColor color)
 {
     switch (color)
     {
         case 0:
-            return "\u25A0 "; //черный квадрат
+            return "\u25A0 ";
         case 1:
-            return  "\u25A1 "; //белый квадрат
+            return  "\u25A1 ";
         default:
             return "  ";
     }
 }
 
-// позиция, позволяет линейный массив клеток представить в виде 2мерного массива
+std::string BlackPieceToString(Piece& piece)
+{
+    return "\u265F ";
+}
+
+std::string WhitePieceToString(Piece& piece)
+{
+    return "\u2659 ";
+}
+
 struct Position
 {
-    uint16_t col, row;
+    size_t col, row;
     
-    Position(uint16_t col, uint16_t row) : col(col), row(row) {}
+    Position(size_t col, size_t row) : col(col), row(row) {}
 };
 
-// базовый класс фигуры
 class Piece
 {
 public:
-    virtual void Move(Position& nextPosition) = 0; //Двигает фигуру на указанную позицию
-    virtual bool IsMoveValiable(const Position& nextPosition) = 0; //Проверяет может ли фигура попасть на указанную позицию
-    virtual void Eat(Piece& target) = 0; // Ест указанную фигуру
+    Piece() {}
+    Piece(EColor color): _color(color) {}
+    
+    virtual void Move(Cell& nextCell) = 0;
     virtual ~Piece() {};
+    
+    const EColor GetColor() { return _color; }
+    
+    friend std::ostream& operator << (std::ostream& os, Piece& piece)
+    {
+        return piece.GetColor() ? os << BlackPieceToString(piece): os << WhitePieceToString(piece);
+    }
     
 private:
     EColor _color;
 };
 
-// Фигуры
-class Pawn: public Piece {}; //Пешка 
+class Pawn: public Piece
+{
+public: 
+    Pawn(EColor color): Piece(color){}
+    
+    void Move(Cell& nextCell){}
+}; 
 
-class Knight: public Piece {}; // ЛОШАДЬ
+class Knight: public Piece {}; 
 
-class Bishop: public Piece {}; // МАМОНТ
+class Bishop: public Piece {}; 
 
-class Rook: public Piece {}; // ЛАДЬЯ
+class Rook: public Piece {}; 
 
-class Queen: public Piece {}; // ФЕРЗЬ
+class Queen: public Piece {};
 
-class King: public Piece {}; // КОРОЛЬ
+class King: public Piece {}; 
 
 class Cell
 {
@@ -80,6 +104,11 @@ public:
         return *this;
     }
     
+    friend std::ostream& operator << (std::ostream& os, const Cell& cell)
+    {
+        return os << ColorToString(cell._color);
+    }
+    
     ~Cell(){}
     
     EColor GetColor()
@@ -101,9 +130,9 @@ private:
 class Board
 {
 public:
-    Board(size_t size)
+    Board(){}
+    Board(size_t size): _size(size)
     {
-        _size = size;
         _cells = new Cell[size*size];
         int currentCell = 0;
         
@@ -117,32 +146,37 @@ public:
         }
     }
     
-    ~Board();
-    
-    void Print()
+    friend std::ostream& operator << (std::ostream& os, const Board& board)
     {
         int currentCell = 0;
-        
-        for (int i = 0; i < _size; ++i)
+    
+        for (int i = 0; i < board._size; ++i)
         {
-            std::cout<< _size - i << ' ';
-            
-            for (int i = 0; i < _size; ++i)
+            os << board._size - i;
+        
+            for (int j = 0; j < board._size; ++j, ++currentCell)
             {
-                std::cout<<ColorToString(_cells[currentCell].GetColor());
-                ++currentCell;
+                os << board._cells[currentCell];
+                
             }
             
-            std::cout<<'\n';
+            os << "\n";
         }
         
-        std::cout << "  ";
+        os << ' ';
         
-        for (int i = 0 ; i < _size; ++i)
+        for (int i = 0; i < board._size; ++i)
         {
-            std::cout << (char)(65+i) << ' ';
+            os << (char)(65+i) << ' ';
         }
+        
+        os << '\n';
+        
+        return os;
     }
+    
+    ~Board();
+    
     
     
 private:
@@ -150,22 +184,10 @@ private:
     Cell* _cells;
 };
 
-//Обработчик позиций, сохраняет и загружает доску с фигурами
-class PositionsHandler
-{
-public:
-    static Board* Load(std::string& path); //Загружает позиции фигур из файла
-    static void Save(); //Сохраняет позиции фигур в файл
-};
-
 int main(void)
 {
-    Board* board8 = new Board(8);
-    board8->Print();
+    Pawn* p = new Pawn(White);
+    std::cout<<*p;
     
-    std::cout<<"\n\n\n";
-    
-     Board* board12 = new Board(12);
-     board12->Print();
-    
+
 }
