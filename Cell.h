@@ -7,18 +7,18 @@
 class Cell
 {
 public:
-	Cell();
-	Cell(EColor color, Coordinate* coordinate, Piece* piece = nullptr);
-	Cell(const Cell& cell);
-	Cell& operator=(const Cell& other);
-	friend std::ostream& operator << (std::ostream& os, const Cell& cell);
-	~Cell();
-	
-	const EColor& GetColor();
-	const Coordinate& GetCoordinate();
-	
+    Cell();
+    Cell(EColor color, Coordinate* coordinate, Piece* piece = nullptr);
+    Cell(const Cell& cell);
+    Cell& operator=(const Cell& other);
+    friend std::ostream& operator << (std::ostream& os, const Cell& cell);
+    ~Cell();
+     
+    const EColor& GetColor();
+    const Coordinate& GetCoordinate();
+    
 private:
-	Piece* _currentPiece;
-	EColor _color;
-	Coordinate* _currentCoordinate;
+    Piece* _currentPiece;
+    EColor _color;
+    Coordinate* _currentCoordinate;
 };
