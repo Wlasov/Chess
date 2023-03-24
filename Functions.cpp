@@ -2,7 +2,7 @@
 
 std::string ColorToString(EColor color)
 {
-	switch (color)
+    switch (color)
     {
         case 0:
             return "\u25A0 ";
