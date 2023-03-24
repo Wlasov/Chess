@@ -4,7 +4,7 @@ Board::Board() {}
 
 Board::Board(size_t size): _size(size)
 {
-	_cells = new Cell[size*size];
+    _cells = new Cell[size*size];
     int currentCell = 0;
 
     for (int i = 0; i < size; ++i)
@@ -19,7 +19,7 @@ Board::Board(size_t size): _size(size)
 
 std::ostream& operator << (std::ostream& os, const Board& board)
 {
-	int currentCell = 0;
+    int currentCell = 0;
     for (int i = 0; i < board._size; ++i)
     {
         os << board._size - i;
