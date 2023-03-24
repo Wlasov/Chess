@@ -3,10 +3,10 @@
 Cell::Cell(){}
 
 Cell::Cell(EColor color, Coordinate* coordinate, Piece* piece):
-	_color(color),
-	_currentCoordinate(coordinate),
-	_currentPiece(piece)
-	{}
+    _color(color),
+    _currentCoordinate(coordinate),
+    _currentPiece(piece)
+    {}
 
 Cell::~Cell(){}
 
