@@ -51,6 +51,9 @@ void Game()
 
 int main(void)
 {	
-
-	Game();
+	Board* b = new Board(8);
+	b->PlacePiece("e4", new Pawn(White));
+	std::cout<<*b;
+	b->MovePiece("e4", "e5");
+	std::cout<<*b;
 }
