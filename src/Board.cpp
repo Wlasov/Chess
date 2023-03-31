@@ -106,9 +106,8 @@ void Board::MovePiece(const std::string& from, const std::string& to, EInputMode
 {
     size_t col = ColCoordinateToInt(from);
     size_t row = _size - 1 - RowCoorinateToInt(from);
-    Piece* target = _cells[_size*row+col].GetPiece();
     
-    PlacePiece(to, target);
+    PlacePiece(to, _cells[_size*row+col].GetPiece(););
     RemovePiece(from);
 }
 
