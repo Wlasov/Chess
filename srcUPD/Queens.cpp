@@ -21,13 +21,13 @@ bool Queens::TryPlace(int col, int row)
 	
 	for(int i = 1; i <= col && row-i >= 0; ++i)
     	{
-        if (!_board->GetCell(col - i, row - i).IsEmpty()) 
+		if (!_board->GetCell(col - i, row - i).IsEmpty()) 
 			return false;
     	}
 	
 	for(int i = 1; i <= col && row+i < size; i++)
     	{
-        if (!_board->GetCell(col - i, row + i).IsEmpty())
+		if (!_board->GetCell(col - i, row + i).IsEmpty())
 			return false;
     	}
 	
@@ -50,9 +50,9 @@ void Queens::FindAllSolutions(int line)
     	{
 		if(TryPlace(line, i))
 		{
-				_board->PlacePiece(new Coordinate(line, i), new Queen(White));
-				FindAllSolutions(line+1);
-				_board->RemovePiece(new Coordinate(line, i));
+			_board->PlacePiece(new Coordinate(line, i), new Queen(White));
+			FindAllSolutions(line+1);
+			_board->RemovePiece(new Coordinate(line, i));
 		}
    	}
 }
