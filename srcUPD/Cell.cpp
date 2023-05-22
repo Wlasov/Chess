@@ -5,9 +5,9 @@ std::string ColorToString(EColor color)
 	switch (color)
     {
         case 0:
-            return "\u25A0";
+            return BLACK_SQUARE_SIGN;
         case 1:
-            return  "\u25A1";
+            return  WHITE_SQUARE_SIGN;
         default:
             return "  ";
     }
@@ -48,4 +48,9 @@ std::ostream& operator << (std::ostream& os, const Cell& cell)
 EColor Cell::GetColor()
 {
 	return _color;
+}
+
+BasePiece* Cell::GetPiece()
+{
+	return _currentPiece;
 }

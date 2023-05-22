@@ -1,6 +1,7 @@
 #pragma once
 #include "BasePiece.h"
 #include "Coordinate.h"
+#include "Signs.h"
 
 class Cell
 {
@@ -13,6 +14,7 @@ public:
 	Cell& operator=(const Cell& other);
 	friend std::ostream& operator << (std::ostream& os, const Cell& cell);
 	EColor GetColor();
+	BasePiece* GetPiece();
 	
 private:
 	Coordinate* _coordinate = nullptr;
