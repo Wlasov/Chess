@@ -1,4 +1,5 @@
 #include "Cell.h"
+#include "color.hpp"
 
 std::string ColorToString(EColor color)
 {
@@ -42,7 +43,14 @@ Cell& Cell::operator=(const Cell& other)
 
 std::ostream& operator << (std::ostream& os, const Cell& cell)
 {
-	return cell.IsEmpty() ? os << ColorToString(cell._color) : os << *cell._currentPiece;
+    if (cell.IsEmpty())
+    {
+        return cell._color ? os << dye::on_grey("  ") : os << dye::on_white("  ");
+    }
+    else
+    {
+        return cell._color ? os << dye::on_grey(*cell._currentPiece) : os << dye::on_white(*cell._currentPiece);
+    }
 }
 
 EColor Cell::GetColor()
