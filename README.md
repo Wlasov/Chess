@@ -1,9 +1,4 @@
-нереальная помоечка
-# CHESS
+нереальная помойка + попытка в красоту
 
-ToDo:
-    +Chess Game rules;
-    +Game class;
-    +EQP solutions save;
-
-    
+# output:
+![image](https://github.com/Wlasov/Chess/assets/93740526/f8cb22b7-40a5-46b8-972c-5036fc81c3ce)
