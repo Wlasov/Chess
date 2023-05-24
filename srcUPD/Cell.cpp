@@ -44,13 +44,9 @@ Cell& Cell::operator=(const Cell& other)
 std::ostream& operator << (std::ostream& os, const Cell& cell)
 {
     if (cell.IsEmpty())
-    {
         return cell._color ? os << dye::on_grey("  ") : os << dye::on_white("  ");
-    }
     else
-    {
         return cell._color ? os << dye::on_grey(*cell._currentPiece) : os << dye::on_white(*cell._currentPiece);
-    }
 }
 
 EColor Cell::GetColor()
