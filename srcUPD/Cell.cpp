@@ -45,13 +45,9 @@ std::ostream& operator << (std::ostream& os, const Cell& cell)
 {
 	#if defined(_WIN32)
 		if (cell.IsEmpty())
-		{
 			return cell._color ? os << dye::on_green("  ") : os << dye::on_grey("  ");
-		}
 		else
-		{
 			return cell._color ? os << dye::on_green(*cell._currentPiece) : os << dye::on_grey(*cell._currentPiece);
-		}
 	#endif
 	
     return cell.IsEmpty() ? os << ColorToString(cell._color) : os << cell._currentPiece;
