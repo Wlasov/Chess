@@ -1,6 +1,7 @@
 #pragma once
 #include "Queens.h"
 
+// Type of games
 enum EGameType
 {
 	Chess,
@@ -13,9 +14,9 @@ public:
 	Game(EGameType gt);
 	~Game();
 	
-	void Start();
-	void End();
+	void Start(); // start game
+	void End(); // end game
 	
 private:
-	EGameType _gameType;
+	EGameType _gameType; // type of game
 };
