@@ -2,6 +2,10 @@
 #include "BasePiece.h"
 #include "Signs.h"
 
+/*
+	Classes of the Chess pieces.
+*/
+
 class Pawn: public BasePiece
 {
 public:
@@ -13,13 +17,14 @@ public:
 		return _hasMoved;
 	}
 	
+	// chage while pawn's move
 	void ChangeMovedState()
 	{
 		_hasMoved = true;
 	}
 	
 private:
-	bool _hasMoved = false;
+	bool _hasMoved = false; // a flag that indicates whether the pawn has made a move. If it doesn't, it can move 2 cells forward; if not, it can move 1 cell.
 };
 
 class Queen: public BasePiece
