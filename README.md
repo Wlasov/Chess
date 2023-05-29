@@ -1,5 +1,10 @@
 нереальная помойка + попытка в красоту
 
+# 26 x 26 board solution:
+
+![image](https://github.com/Wlasov/Chess/assets/93740526/0b36ac89-43d7-4407-9838-62496d88789e)
+
+
 # output:
 
 ![ezgif-1-067bd280d7](https://github.com/Wlasov/Chess/assets/93740526/e9d76901-5544-43e0-96c0-7e82854e6156)
